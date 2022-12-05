@@ -26,21 +26,21 @@ class PaginatorButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 12.0,
-          vertical: 10.0,
+      child: TextButton(
+        onPressed: onPressed,
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+              )
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(_backgroundColor(context, selected)?? Colors.white),
+          foregroundColor: MaterialStateProperty.all<Color>(_foregroundColor(context, selected)?? Colors.white),
         ),
-        child: TextButton(
-          onPressed: onPressed,
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                )
-            ),
-            backgroundColor: MaterialStateProperty.all<Color>(_backgroundColor(context, selected)?? Colors.white),
-            foregroundColor: MaterialStateProperty.all<Color>(_foregroundColor(context, selected)?? Colors.white),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 12.0,
+            vertical: 10.0,
           ),
           child: child,
         ),

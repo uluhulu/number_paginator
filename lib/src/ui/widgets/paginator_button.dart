@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:number_paginator/src/ui/widgets/inherited_number_paginator.dart';
 
@@ -37,14 +38,17 @@ class PaginatorButton extends StatelessWidget {
               Radius.circular(4),
             ),
           ),
-          child: TextButton(
+          child: CupertinoButton(
             onPressed: onPressed,
-            style: TextButton.styleFrom(
-              // shape: InheritedNumberPaginator.of(context).config.buttonShape ??
-              //     const CircleBorder(),
-              backgroundColor: _backgroundColor(context, selected),
-              foregroundColor: _foregroundColor(context, selected),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(4),
             ),
+            // style: TextButton.styleFrom(
+            //   // shape: InheritedNumberPaginator.of(context).config.buttonShape ??
+            //   //     const CircleBorder(),
+            //   backgroundColor: _backgroundColor(context, selected),
+            //   foregroundColor: _foregroundColor(context, selected),
+            // ),
             child: child,
           ),
         ),

@@ -29,7 +29,7 @@ class NumberPaginator extends StatefulWidget {
 
   final NumberPaginatorController? controller;
   
-  final Widget? iconButton;
+  final Widget iconButton;
 
   /// Creates an instance of [NumberPaginator].
   const NumberPaginator({

@@ -11,12 +11,15 @@ class PaginatorButton extends StatelessWidget {
   /// Whether the button is currently selected.
   final bool selected;
 
+  final bool isArrow;
+
   /// Creates an instance of [PaginatorButton].
   const PaginatorButton({
     Key? key,
     required this.onPressed,
     required this.child,
     this.selected = false,
+    this.isArrow = false,
   }) : super(key: key);
 
   @override
@@ -24,16 +27,26 @@ class PaginatorButton extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: TextButton(
-          onPressed: onPressed,
-          style: TextButton.styleFrom(
-            shape: InheritedNumberPaginator.of(context).config.buttonShape ??
-                const CircleBorder(),
-            backgroundColor: _backgroundColor(context, selected),
-            foregroundColor: _foregroundColor(context, selected),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12.0,
+          vertical: 10.0,
+        ),
+        child: Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(4),
+            ),
           ),
-          child: child,
+          child: TextButton(
+            onPressed: onPressed,
+            style: TextButton.styleFrom(
+              // shape: InheritedNumberPaginator.of(context).config.buttonShape ??
+              //     const CircleBorder(),
+              backgroundColor: _backgroundColor(context, selected),
+              foregroundColor: _foregroundColor(context, selected),
+            ),
+            child: child,
+          ),
         ),
       ),
     );

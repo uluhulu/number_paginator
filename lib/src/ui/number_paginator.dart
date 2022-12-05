@@ -28,6 +28,8 @@ class NumberPaginator extends StatefulWidget {
   final NumberPaginatorContentBuilder? contentBuilder;
 
   final NumberPaginatorController? controller;
+  
+  final Widget? iconButton;
 
   /// Creates an instance of [NumberPaginator].
   const NumberPaginator({
@@ -38,6 +40,7 @@ class NumberPaginator extends StatefulWidget {
     this.config = const NumberPaginatorUIConfig(),
     this.contentBuilder,
     this.controller,
+    this.iconButton = const Icon(Icons.chevron_left),
   })  : assert(initialPage >= 0),
         assert(initialPage <= numberPages - 1),
         super(key: key);
@@ -74,7 +77,7 @@ class NumberPaginatorState extends State<NumberPaginator> {
           children: [
             PaginatorButton(
               onPressed: _controller.currentPage > 0 ? _controller.prev : null,
-              child: const Icon(Icons.chevron_left),
+              child: widget.iconButton,
             ),
             ..._buildCenterContent(),
             PaginatorButton(

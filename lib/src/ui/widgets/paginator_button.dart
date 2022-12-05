@@ -37,13 +37,7 @@ class PaginatorButton extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all<Color>(_backgroundColor(context, selected)?? Colors.white),
           foregroundColor: MaterialStateProperty.all<Color>(_foregroundColor(context, selected)?? Colors.white),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12.0,
-            vertical: 10.0,
-          ),
-          child: child,
-        ),
+        child: child,
       ),
     );
   }

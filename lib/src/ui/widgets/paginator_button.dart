@@ -24,39 +24,59 @@ class PaginatorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
+    return SizedBox(
+      height: 40,
+      width: 32,
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-              )
-          ),
-          backgroundColor: MaterialStateProperty.all<Color>(_backgroundColor(context, selected)?? Colors.white),
-          foregroundColor: MaterialStateProperty.all<Color>(_foregroundColor(context, selected)?? Colors.white),
+            borderRadius: BorderRadius.circular(4.0),
+          )),
+          backgroundColor: MaterialStateProperty.all<Color>(
+              _backgroundColor(context, selected) ?? Colors.white),
+          foregroundColor: MaterialStateProperty.all<Color>(
+              _foregroundColor(context, selected) ?? Colors.white),
         ),
         child: child,
       ),
     );
   }
 
-  Color? _backgroundColor(BuildContext context, bool selected) => selected
-      ? (InheritedNumberPaginator.of(context)
+  Color? _backgroundColor(BuildContext context, bool selected) => isArrow
+      ? selected
+          ? (InheritedNumberPaginator.of(context)
+                  .config
+                  .arrowSelectedBackgroundColor ??
+              Theme.of(context).colorScheme.secondary)
+          : InheritedNumberPaginator.of(context)
               .config
-              .buttonSelectedBackgroundColor ??
-          Theme.of(context).colorScheme.secondary)
-      : InheritedNumberPaginator.of(context)
-          .config
-          .buttonUnselectedBackgroundColor;
+              .arrowUnselectedBackgroundColor
+      : selected
+          ? (InheritedNumberPaginator.of(context)
+                  .config
+                  .buttonSelectedBackgroundColor ??
+              Theme.of(context).colorScheme.secondary)
+          : InheritedNumberPaginator.of(context)
+              .config
+              .buttonUnselectedBackgroundColor;
 
-  Color? _foregroundColor(BuildContext context, bool selected) => selected
-      ? (InheritedNumberPaginator.of(context)
+  Color? _foregroundColor(BuildContext context, bool selected) => isArrow
+      ? selected
+          ? (InheritedNumberPaginator.of(context)
+                  .config
+                  .arrowSelectedForegroundColor ??
+              Colors.white)
+          : InheritedNumberPaginator.of(context)
               .config
-              .buttonSelectedForegroundColor ??
-          Colors.white)
-      : InheritedNumberPaginator.of(context)
-          .config
-          .buttonUnselectedForegroundColor;
+              .arrowUnselectedForegroundColor
+      : selected
+          ? (InheritedNumberPaginator.of(context)
+                  .config
+                  .buttonSelectedForegroundColor ??
+              Colors.white)
+          : InheritedNumberPaginator.of(context)
+              .config
+              .buttonUnselectedForegroundColor;
 }

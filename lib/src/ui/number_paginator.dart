@@ -80,6 +80,8 @@ class NumberPaginatorState extends State<NumberPaginator> {
           children: [
             PaginatorButton(
               onPressed: _controller.currentPage > 0 ? _controller.prev : null,
+              selected: _controller.currentPage != 1,
+              isArrow: true,
               child: widget.leftButton,
             ),
             ..._buildCenterContent(),
@@ -87,6 +89,8 @@ class NumberPaginatorState extends State<NumberPaginator> {
               onPressed: _controller.currentPage < widget.numberPages - 1
                   ? _controller.next
                   : null,
+              selected: _controller.currentPage < widget.numberPages - 1,
+              isArrow: true,
               child: widget.rightButton,
             ),
           ],

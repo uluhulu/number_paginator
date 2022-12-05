@@ -1,8 +1,7 @@
-import 'package:example/builder_page.dart';
-import 'package:example/dropdown_page.dart';
-import 'package:example/numbers_page.dart';
-import 'package:example/only_arrows_page.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:number_paginator/number_paginator.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,29 +11,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue),
-      ),
-      home: DefaultTabController(
-        length: 4,
+      home: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Number Paginator"),
-            bottom: const TabBar(
-              tabs: [
-                Tab(child: Text("Hidden")),
-                Tab(child: Text("Numbers")),
-                Tab(child: Text("Dropdown")),
-                Tab(child: Text("Custom Builder")),
-              ],
-            ),
-          ),
-          body: const TabBarView(
+          body: Column(
             children: [
-              OnlyArrowsPage(),
-              NumbersPage(),
-              DropdownPage(),
-              BuilderPage(),
+              NumberPaginator(
+                numberPages: 10,
+                onPageChange: (int index) {},
+                // initially selected index
+                initialPage: 1,
+                rightButton: SvgPicture.asset("assets/icon/arrow-right-1.svg"),
+                leftButton: SvgPicture.asset("assets/icon/arrow-left-1.svg"),
+                config: const NumberPaginatorUIConfig(
+                  // default height is 48
+                  height: 40,
+                  buttonShape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                  buttonSelectedForegroundColor: Colors.white,
+                  buttonUnselectedForegroundColor: Colors.black,
+                  buttonUnselectedBackgroundColor: Colors.transparent,
+                  buttonSelectedBackgroundColor: Colors.blue,
+
+                  arrowSelectedForegroundColor: Colors.red,
+                  arrowUnselectedForegroundColor: Colors.green,
+                  arrowUnselectedBackgroundColor: Colors.red,
+                  arrowSelectedBackgroundColor: Colors.blue,
+                ),
+              )
             ],
           ),
         ),

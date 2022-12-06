@@ -15,13 +15,11 @@ class NumberPaginatorUIConfig {
   /// Defaults to [Colors.white].
   final Color? buttonSelectedForegroundColor;
 
-  final Color? arrowSelectedForegroundColor;
 
   /// The [PaginatorButton]'s foreground color (text/icon color) when unselected.
   ///
   /// Defaults to `null`.
   final Color? buttonUnselectedForegroundColor;
-  final Color? arrowUnselectedForegroundColor;
 
   /// The [PaginatorButton]'s background color when selected.
   ///
@@ -53,8 +51,6 @@ class NumberPaginatorUIConfig {
     this.height = 48.0,
     this.buttonShape,
     this.buttonSelectedForegroundColor,
-    this.arrowSelectedForegroundColor,
-    this.arrowUnselectedForegroundColor,
     this.arrowSelectedBackgroundColor,
     this.arrowUnselectedBackgroundColor,
     this.buttonUnselectedForegroundColor,

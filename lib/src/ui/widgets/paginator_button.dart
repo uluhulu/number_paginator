@@ -69,16 +69,7 @@ class PaginatorButton extends StatelessWidget {
               .config
               .buttonUnselectedBackgroundColor;
 
-  Color? _foregroundColor(BuildContext context, bool selected) => isArrow
-      ? selected
-          ? (InheritedNumberPaginator.of(context)
-                  .config
-                  .arrowSelectedForegroundColor ??
-              Colors.white)
-          : InheritedNumberPaginator.of(context)
-              .config
-              .arrowUnselectedForegroundColor
-      : selected
+  Color? _foregroundColor(BuildContext context, bool selected) => selected
           ? (InheritedNumberPaginator.of(context)
                   .config
                   .buttonSelectedForegroundColor ??

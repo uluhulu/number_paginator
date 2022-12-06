@@ -9,8 +9,10 @@ environment:
 
 dependencies:
   auto_size_text: ^3.0.0
+  flutter_svg: ^1.0.3
   flutter:
     sdk: flutter
+
 
 dev_dependencies:
   flutter_lints: ^2.0.1
@@ -24,9 +26,6 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages

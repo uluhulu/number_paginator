@@ -1,12 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int curp = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +23,17 @@ class MyApp extends StatelessWidget {
             children: [
               NumberPaginator(
                 numberPages: 10,
-                onPageChange: (int index) {},
+                onPageChange: (int index) {
+                  setState(() {
+                    curp = index;
+                  });
+                },
                 // initially selected index
-                initialPage: 1,
-                rightButton: SvgPicture.asset("assets/icon/arrow-right-1.svg"),
-                leftButton: SvgPicture.asset("assets/icon/arrow-left-1.svg"),
+                initialPage: curp,
+                rightButton: Icon( Icons.chevron_right, color: Colors.grey,),
+                leftButton: Icon(Icons.chevron_left,color: Colors.grey,),
+                rightButtonActive: Icon(Icons.chevron_right,color: Colors.red,),
+                leftButtonActive: Icon(Icons.chevron_left,color: Colors.red),
                 config: const NumberPaginatorUIConfig(
                   // default height is 48
                   height: 40,

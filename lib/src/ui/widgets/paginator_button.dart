@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:number_paginator/src/ui/widgets/inherited_number_paginator.dart';
 
 class PaginatorButton extends StatelessWidget {
@@ -7,6 +8,7 @@ class PaginatorButton extends StatelessWidget {
 
   /// The child of the button.
   final Widget child;
+  final Widget? activeChild;
 
   /// Whether the button is currently selected.
   final bool selected;
@@ -20,6 +22,7 @@ class PaginatorButton extends StatelessWidget {
     required this.child,
     this.selected = false,
     this.isArrow = false,
+    this.activeChild,
   }) : super(key: key);
 
   @override
@@ -39,7 +42,11 @@ class PaginatorButton extends StatelessWidget {
           foregroundColor: MaterialStateProperty.all<Color>(
               _foregroundColor(context, selected) ?? Colors.white),
         ),
-        child: child,
+        child: isArrow
+            ? selected
+                ? activeChild!
+                : child
+            : child,
       ),
     );
   }

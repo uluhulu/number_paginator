@@ -22,7 +22,7 @@ class NumberContent extends StatelessWidget {
         var buttonWidth = constraints.maxHeight;
         var availableSpots = (constraints.maxWidth / buttonWidth).floor();
         return IntrinsicWidth(
-          stepWidth: 100,
+          stepWidth: 80,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

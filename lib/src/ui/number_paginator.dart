@@ -83,7 +83,8 @@ class NumberPaginatorState extends State<NumberPaginator> {
         height: widget.config.height,
         child: Row(
           // mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: widget.config.mainAxisAlignment,
+          // mainAxisAlignment: widget.config.mainAxisAlignment,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             PaginatorButton(
               onPressed: _controller.currentPage > 0 ? _controller.prev : null,

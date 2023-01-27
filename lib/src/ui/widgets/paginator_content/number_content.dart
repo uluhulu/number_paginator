@@ -21,11 +21,14 @@ class NumberContent extends StatelessWidget {
         /// button width.
         var buttonWidth = constraints.maxHeight;
         var availableSpots = (constraints.maxWidth / buttonWidth).floor();
-
         return IntrinsicWidth(
+          stepWidth: 100,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              Container(
+                constraints: BoxConstraints( maxWidth: 6),
+              ),
               _buildPageButton(context, 0),
               if (_frontDotsShouldShow(context, availableSpots))
                 _buildDots(context),
@@ -33,9 +36,14 @@ class NumberContent extends StatelessWidget {
                 ..._generateButtonList(context, availableSpots),
               if (_backDotsShouldShow(context, availableSpots))
                 _buildDots(context),
+
               if (InheritedNumberPaginator.of(context).numberPages > 1)
                 _buildPageButton(context,
                     InheritedNumberPaginator.of(context).numberPages - 1),
+              Container(
+                constraints: BoxConstraints(maxWidth: 6),
+              ),
+
             ],
           ),
         );

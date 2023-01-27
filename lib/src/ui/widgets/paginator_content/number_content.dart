@@ -24,15 +24,20 @@ class NumberContent extends StatelessWidget {
 
         return IntrinsicWidth(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              if (!_frontDotsShouldShow(context, availableSpots) && !_backDotsShouldShow(context, availableSpots))
+                SizedBox(width: 16,),
               _buildPageButton(context, 0),
+
               if (_frontDotsShouldShow(context, availableSpots))
                 _buildDots(context),
               if (InheritedNumberPaginator.of(context).numberPages > 1)
                 ..._generateButtonList(context, availableSpots),
               if (_backDotsShouldShow(context, availableSpots))
                 _buildDots(context),
+              if (!_frontDotsShouldShow(context, availableSpots) && !_backDotsShouldShow(context, availableSpots))
+                SizedBox(width: 16,),
               if (InheritedNumberPaginator.of(context).numberPages > 1)
                 _buildPageButton(context,
                     InheritedNumberPaginator.of(context).numberPages - 1),

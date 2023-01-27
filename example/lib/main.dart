@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: [
               NumberPaginator(
-                numberPages: 1,
+                numberPages: 100,
                 onPageChange: (int index) {
                   setState(() {
                     curp = index;

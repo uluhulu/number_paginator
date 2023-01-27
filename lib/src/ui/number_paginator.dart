@@ -6,7 +6,7 @@ import 'package:number_paginator/src/ui/widgets/inherited_number_paginator.dart'
 import 'package:number_paginator/src/ui/widgets/paginator_button.dart';
 import 'package:number_paginator/src/ui/widgets/paginator_content.dart';
 
-typedef NumberPaginatorContentBuilder = Widget Function(int index);
+  typedef NumberPaginatorContentBuilder = Widget Function(int index);
 
 /// The main widget used for creating a [NumberPaginator].
 class NumberPaginator extends StatefulWidget {
@@ -82,6 +82,7 @@ class NumberPaginatorState extends State<NumberPaginator> {
       child: SizedBox(
         height: widget.config.height,
         child: Row(
+          // mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: widget.config.mainAxisAlignment,
           children: [
             PaginatorButton(
@@ -115,7 +116,7 @@ class NumberPaginatorState extends State<NumberPaginator> {
           child: widget.contentBuilder!(_controller.currentPage),
         )
       else if (widget.config.mode != ContentDisplayMode.hidden)
-        Expanded(
+        Flexible(
           child: Container(
             padding: widget.config.contentPadding,
             child: PaginatorContent(

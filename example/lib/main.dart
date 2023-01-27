@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: [
               NumberPaginator(
-                numberPages: 10,
+                numberPages: 1,
                 onPageChange: (int index) {
                   setState(() {
                     curp = index;
@@ -30,10 +30,19 @@ class _MyAppState extends State<MyApp> {
                 },
                 // initially selected index
                 initialPage: curp,
-                rightButton: Icon( Icons.chevron_right, color: Colors.grey,),
-                leftButton: Icon(Icons.chevron_left,color: Colors.grey,),
-                rightButtonActive: Icon(Icons.chevron_right,color: Colors.red,),
-                leftButtonActive: Icon(Icons.chevron_left,color: Colors.red),
+                rightButton: Icon(
+                  Icons.chevron_right,
+                  color: Colors.grey,
+                ),
+                leftButton: Icon(
+                  Icons.chevron_left,
+                  color: Colors.grey,
+                ),
+                rightButtonActive: Icon(
+                  Icons.chevron_right,
+                  color: Colors.red,
+                ),
+                leftButtonActive: Icon(Icons.chevron_left, color: Colors.red),
                 config: const NumberPaginatorUIConfig(
                   // default height is 48
                   height: 40,
@@ -44,9 +53,8 @@ class _MyAppState extends State<MyApp> {
                   buttonUnselectedForegroundColor: Colors.black,
                   buttonUnselectedBackgroundColor: Colors.transparent,
                   buttonSelectedBackgroundColor: Colors.blue,
+                  mainAxisAlignment: MainAxisAlignment.start,
 
-                  arrowSelectedForegroundColor: Colors.red,
-                  arrowUnselectedForegroundColor: Colors.green,
                   arrowUnselectedBackgroundColor: Colors.red,
                   arrowSelectedBackgroundColor: Colors.blue,
                 ),

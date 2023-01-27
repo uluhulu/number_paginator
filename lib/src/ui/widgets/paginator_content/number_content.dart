@@ -22,20 +22,22 @@ class NumberContent extends StatelessWidget {
         var buttonWidth = constraints.maxHeight;
         var availableSpots = (constraints.maxWidth / buttonWidth).floor();
 
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildPageButton(context, 0),
-            if (_frontDotsShouldShow(context, availableSpots))
-              _buildDots(context),
-            if (InheritedNumberPaginator.of(context).numberPages > 1)
-              ..._generateButtonList(context, availableSpots),
-            if (_backDotsShouldShow(context, availableSpots))
-              _buildDots(context),
-            if (InheritedNumberPaginator.of(context).numberPages > 1)
-              _buildPageButton(context,
-                  InheritedNumberPaginator.of(context).numberPages - 1),
-          ],
+        return IntrinsicWidth(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildPageButton(context, 0),
+              if (_frontDotsShouldShow(context, availableSpots))
+                _buildDots(context),
+              if (InheritedNumberPaginator.of(context).numberPages > 1)
+                ..._generateButtonList(context, availableSpots),
+              if (_backDotsShouldShow(context, availableSpots))
+                _buildDots(context),
+              if (InheritedNumberPaginator.of(context).numberPages > 1)
+                _buildPageButton(context,
+                    InheritedNumberPaginator.of(context).numberPages - 1),
+            ],
+          ),
         );
       },
     );
@@ -68,8 +70,12 @@ class NumberContent extends StatelessWidget {
         onPressed: () =>
             InheritedNumberPaginator.of(context).onPageChange?.call(index),
         selected: _selected(index),
-        child:
-            AutoSizeText((index + 1).toString(), maxLines: 1, minFontSize: 5),
+        child: AutoSizeText(
+          (index + 1).toString(),
+          maxLines: 1,
+          minFontSize: 16,
+        ),
+        // Center(child: Text((index + 1).toString(), maxLines: 1, style: const TextStyle(fontSize: 16),)),
       );
 
   Widget _buildDots(BuildContext context) => AspectRatio(

@@ -22,20 +22,22 @@ class NumberContent extends StatelessWidget {
         var buttonWidth = constraints.maxHeight;
         var availableSpots = (constraints.maxWidth / buttonWidth).floor();
 
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _buildPageButton(context, 0),
-            if (_frontDotsShouldShow(context, availableSpots))
-              _buildDots(context),
-            if (InheritedNumberPaginator.of(context).numberPages > 1)
-              ..._generateButtonList(context, availableSpots),
-            if (_backDotsShouldShow(context, availableSpots))
-              _buildDots(context),
-            if (InheritedNumberPaginator.of(context).numberPages > 1)
-              _buildPageButton(context,
-                  InheritedNumberPaginator.of(context).numberPages - 1),
-          ],
+        return IntrinsicWidth(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildPageButton(context, 0),
+              if (_frontDotsShouldShow(context, availableSpots))
+                _buildDots(context),
+              if (InheritedNumberPaginator.of(context).numberPages > 1)
+                ..._generateButtonList(context, availableSpots),
+              if (_backDotsShouldShow(context, availableSpots))
+                _buildDots(context),
+              if (InheritedNumberPaginator.of(context).numberPages > 1)
+                _buildPageButton(context,
+                    InheritedNumberPaginator.of(context).numberPages - 1),
+            ],
+          ),
         );
       },
     );
